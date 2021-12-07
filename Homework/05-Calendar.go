@@ -24,6 +24,7 @@ func main() {
 	Calendar(yeartime, month)
 }
 
+// 判断平年还是闰年，处理二月逻辑
 func Calendar(yeartime, month uint16) {
 	var day uint16 = 1
 
@@ -50,6 +51,7 @@ func Calendar(yeartime, month uint16) {
 	}
 }
 
+// 对输出日历进行格式化输出
 func OutputYearMonth(yearCalendar *[13][31]int, days int, yeartime, month, day uint16) {
 	var Org int
 	if ZellerFunction2Week(yeartime, month, day) == 0 {
@@ -63,6 +65,7 @@ func OutputYearMonth(yearCalendar *[13][31]int, days int, yeartime, month, day u
 		fmt.Printf("%5s", weekday[i])
 	}
 	fmt.Println()
+	// 格式化首行日历表输出
 	if origin == 0 {
 		fmt.Printf("\t\t\t      ")
 	} else if origin == 1 {
@@ -85,6 +88,7 @@ func OutputYearMonth(yearCalendar *[13][31]int, days int, yeartime, month, day u
 	}
 }
 
+// 判断指定月份一号为星期几
 func ZellerFunction2Week(year, month, day uint16) int {
 	var y, m, c uint16
 	if month >= 3 {
